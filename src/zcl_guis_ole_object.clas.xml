@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Ole object of SAP Gui Scriptin object model</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>CONSTRUCTOR</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>CONSTRUCTOR</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>GET_NAME</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns object name</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>GET_PROPERTY_VALUE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns special property value object for property name</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>GET_PROPERTY_VALUE_AS_STRING</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns value of property as string(for non-object property)</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>GET_TYPE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns object type</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>MV_CURRENT_TYPE_FOR_PROP_FILL</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Medium description</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>M_OLE_OBJECT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Handle of OLE-object of class</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>_ADD_NEW_PROPERTY_TO_CURR_TYPE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Adds new property to currently selected type</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>_FILL_FOR_GUI_APPLICATION</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Fills properties for GuiApplication OLE object</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>_FILL_FOR_GUI_BOX</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Fills properties of GuiBox OLE object type</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>_FILL_FOR_GUI_BUTTON</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Fills properties of OLE object type &apos;GuiButton&apos;</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>_FILL_FOR_GUI_CHECK_BOX</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Fills properties of GuiCheckBox OLE object type</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>_FILL_FOR_GUI_COLLECTION</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Fills properties for GuiCollection OLE object type</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>_FILL_FOR_GUI_COMP_COLLECTION</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Fills properties for GuiComponentCollection OLE object type</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>_FILL_FOR_GUI_CONNECTION</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Fill properties of GuiConnection OLE Object</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>_FILL_FOR_GUI_CONTEXT_MENU</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Fills property list for GuiContextMenu OLE object type</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>_FILL_FOR_GUI_CTEXT_FIELD</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Fills properties of &apos;GuiCTextField&apos; OLE object type</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>_FILL_FOR_GUI_MAIN_WINDOW</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Fills property list for GuiMainWindow OLE object</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>_FILL_FOR_GUI_MENU</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Fills property list for OLE object type &apos;GuiMenu&apos;</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>_FILL_FOR_GUI_MENUBAR</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Fills property list for GuiMenubar OLE object</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>_FILL_FOR_GUI_OK_CODE_FIELD</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Fills property list for &apos;GuiOkCodeField&apos; OLE object type</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>_FILL_FOR_GUI_SESSION</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Fills list of properties for gui session</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>_FILL_FOR_GUI_STATUSBAR</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Fills properties of OLE object type &apos;GuiStatusbar&apos;</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>_FILL_FOR_GUI_STATUS_PANE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Fills properties for GuiStatusPane OLE object</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>_FILL_FOR_GUI_TEXT_FIELD</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Fills properties of &apos;GuiTextField&apos; OLE object</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>_FILL_FOR_GUI_TITLEBAR</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Fills property list for GuiTitlebar OLE object type</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>_FILL_FOR_GUI_TOOLBAR</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Fill property list for GUI Toolbar OLE object</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>_FILL_FOR_GUI_USER_AREA</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Fills properties for GuiUserArea OLE object type</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>_FILL_PROPERTY_LIST</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Fill static list of properties by OLE object type</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>_P</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Adds new property to current type</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>_START_FILL_PROPERTIES_OF_TYPE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Sets global var which object property we will fill</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

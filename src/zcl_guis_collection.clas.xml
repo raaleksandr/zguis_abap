@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCL_GUIS_COLLECTION</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Collection of GUI Scripting objects</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_COLLECTION</CLSNAME>
+     <CMPNAME>GET_COUNT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns number of elements in collection</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_COLLECTION</CLSNAME>
+     <CMPNAME>GET_FIRST</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns first element of OLE objects collection</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_COLLECTION</CLSNAME>
+     <CMPNAME>GET_NEXT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns next element</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_COLLECTION</CLSNAME>
+     <CMPNAME>_GET_OBJECT_AT_POSITION</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns OLE object at certain position of collection</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_COLLECTION</CLSNAME>
+     <CMPNAME>_GET_OLE_OBJECT_AT_POSITION</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns OLE object at certain position of collection</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

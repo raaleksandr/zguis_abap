@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCL_GUIS_PROPERTY_VALUE</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Property value of OLE object that can be object also</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+    <MSG_ID>ZGUISCRIPT_ABAP</MSG_ID>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_PROPERTY_VALUE</CLSNAME>
+     <CMPNAME>CONSTRUCTOR</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>CONSTRUCTOR</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_PROPERTY_VALUE</CLSNAME>
+     <CMPNAME>GET_VALUE_AS_STRING</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns property value as string</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_PROPERTY_VALUE</CLSNAME>
+     <CMPNAME>IS_OBJECT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns if the property value is object or not</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_PROPERTY_VALUE</CLSNAME>
+     <CMPNAME>MV_IS_OBJECT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Flag that the property is object</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_PROPERTY_VALUE</CLSNAME>
+     <CMPNAME>MV_PROPERTY_NAME</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Property name</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_PROPERTY_VALUE</CLSNAME>
+     <CMPNAME>MV_PROPERTY_VALUE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Property value if it is value</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_PROPERTY_VALUE</CLSNAME>
+     <CMPNAME>M_PROPERTY_AS_OLE_OBJECT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Property as OLE object if it has object type</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCL_GUIS_EXPLORER_MODEL</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Model class for GUI Explorer program</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_EXPLORER_MODEL</CLSNAME>
+     <CMPNAME>GET_LIST_OF_SESSIONS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns list of SAP GUI Scripting Sessions</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_EXPLORER_MODEL</CLSNAME>
+     <CMPNAME>_ADD_DATA_OF_CONNECTION</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Adds data of one connection to sessions list</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>
