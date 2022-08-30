@@ -20,6 +20,12 @@
     </SEOCOMPOTX>
     <SEOCOMPOTX>
      <CLSNAME>ZCL_GUIS_CONNECTION</CLSNAME>
+     <CMPNAME>GET_SESSIONS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns collection of SAPGUI sessions of a connection</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_CONNECTION</CLSNAME>
      <CMPNAME>IS_DISABLED_BY_SERVER</CMPNAME>
      <LANGU>E</LANGU>
      <DESCRIPT>Returns flag if SAP GUI Scripting is disabled in connection</DESCRIPT>
