@@ -24,6 +24,12 @@
      <LANGU>E</LANGU>
      <DESCRIPT>Adds data of one connection to sessions list</DESCRIPT>
     </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_EXPLORER_MODEL</CLSNAME>
+     <CMPNAME>_ADD_DATA_OF_SESSION</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Adds data of one session to list</DESCRIPT>
+    </SEOCOMPOTX>
    </DESCRIPTIONS>
   </asx:values>
  </asx:abap>

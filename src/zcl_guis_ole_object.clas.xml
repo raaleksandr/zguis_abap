@@ -32,6 +32,12 @@
     </SEOCOMPOTX>
     <SEOCOMPOTX>
      <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
+     <CMPNAME>GET_PROPERTY_VALUE_AS_BOOL</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns value of property as abap bool(for non-object proper</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_OLE_OBJECT</CLSNAME>
      <CMPNAME>GET_PROPERTY_VALUE_AS_STRING</CMPNAME>
      <LANGU>E</LANGU>
      <DESCRIPT>Returns value of property as string(for non-object property)</DESCRIPT>
