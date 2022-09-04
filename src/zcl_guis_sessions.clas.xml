@@ -5,7 +5,7 @@
    <VSEOCLASS>
     <CLSNAME>ZCL_GUIS_SESSIONS</CLSNAME>
     <LANGU>E</LANGU>
-    <DESCRIPT>Connections list of SAP GUI Scripting</DESCRIPT>
+    <DESCRIPT>Sessions list of SAP GUI Scripting</DESCRIPT>
     <STATE>1</STATE>
     <CLSCCINCL>X</CLSCCINCL>
     <FIXPT>X</FIXPT>
@@ -22,19 +22,19 @@
      <CLSNAME>ZCL_GUIS_SESSIONS</CLSNAME>
      <CMPNAME>GET_COUNT</CMPNAME>
      <LANGU>E</LANGU>
-     <DESCRIPT>Returns number of connections</DESCRIPT>
+     <DESCRIPT>Returns number of sessions</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
      <CLSNAME>ZCL_GUIS_SESSIONS</CLSNAME>
      <CMPNAME>GET_FIRST</CMPNAME>
      <LANGU>E</LANGU>
-     <DESCRIPT>Returns first connection</DESCRIPT>
+     <DESCRIPT>Returns first session</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
      <CLSNAME>ZCL_GUIS_SESSIONS</CLSNAME>
      <CMPNAME>GET_NEXT</CMPNAME>
      <LANGU>E</LANGU>
-     <DESCRIPT>Returns next connection</DESCRIPT>
+     <DESCRIPT>Returns next session</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
      <CLSNAME>ZCL_GUIS_SESSIONS</CLSNAME>

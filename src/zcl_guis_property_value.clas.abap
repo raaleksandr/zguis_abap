@@ -1,40 +1,61 @@
-class ZCL_GUIS_PROPERTY_VALUE definition
-  public
-  create public .
+"! <p class="shorttext synchronized" lang="en">Property value of OLE object that can be object also</p>
+CLASS zcl_guis_property_value DEFINITION
+  PUBLIC
+  CREATE PUBLIC .
 
-public section.
+  PUBLIC SECTION.
 
-  data M_PROPERTY_AS_OLE_OBJECT type OLE2_OBJECT read-only .
-  data MV_PROPERTY_VALUE type STRING read-only .
-  data MV_PROPERTY_NAME type OLE_VERB read-only .
+    "! <p class="shorttext synchronized" lang="en">Property as OLE object if it has object type</p>
+    DATA m_property_as_ole_object TYPE ole2_object READ-ONLY .
+    "! <p class="shorttext synchronized" lang="en">Property value if it is value</p>
+    DATA mv_property_value TYPE string READ-ONLY .
+    "! <p class="shorttext synchronized" lang="en">Property name</p>
+    DATA mv_property_name TYPE ole_verb READ-ONLY .
 
-  methods IS_OBJECT
-    returning
-      value(RV_IS_OBJECT) type ABAP_BOOL .
-  methods CONSTRUCTOR
-    importing
-      !I_OLE_OBJECT type OLE2_OBJECT
-      !IV_PROPERTY_NAME type CLIKE
-    raising
-      ZCX_GUIS_ERROR .
-  methods GET_VALUE_AS_STRING
-    returning
-      value(RV_PROPERTY_VALUE) type STRING
-    raising
-      ZCX_GUIS_ERROR .
-protected section.
-private section.
+    "! <p class="shorttext synchronized" lang="en">Returns if the property value is object or not</p>
+    METHODS is_object
+      RETURNING
+        VALUE(rv_is_object) TYPE abap_bool .
+    "! <p class="shorttext synchronized" lang="en">CONSTRUCTOR</p>
+    "!
+    "! @raising   zcx_guis_error | <p class="shorttext synchronized" lang="en">GUI Scripting in ABAP General Exception Class</p>
+    METHODS constructor
+      IMPORTING
+        !i_ole_object     TYPE ole2_object
+        !iv_property_name TYPE clike
+      RAISING
+        zcx_guis_error .
+    "! <p class="shorttext synchronized" lang="en">Returns property value as string</p>
+    "!
+    "! @raising   zcx_guis_error | <p class="shorttext synchronized" lang="en">GUI Scripting in ABAP General Exception Class</p>
+    METHODS get_value_as_string
+      RETURNING
+        VALUE(rv_property_value) TYPE string
+      RAISING
+        zcx_guis_error .
 
-  data MV_IS_OBJECT type ABAP_BOOL .
+    "! <p class="shorttext synchronized" lang="en">Returns property value as abap bool</p>
+    "!
+    "! @raising   zcx_guis_error | <p class="shorttext synchronized" lang="en">GUI Scripting in ABAP General Exception Class</p>
+    METHODS get_value_as_bool
+      RETURNING
+        VALUE(rv_property_value) TYPE abap_bool
+      RAISING
+        zcx_guis_error .
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+
+    "! <p class="shorttext synchronized" lang="en">Flag that the property is object</p>
+    DATA mv_is_object TYPE abap_bool .
 ENDCLASS.
 
 
 
-CLASS ZCL_GUIS_PROPERTY_VALUE IMPLEMENTATION.
+CLASS zcl_guis_property_value IMPLEMENTATION.
 
 
-  method CONSTRUCTOR.
-    DATA: lv_property_name TYPE ole_verb,
+  METHOD constructor.
+    DATA: lv_property_name         TYPE ole_verb,
           ls_property_value_as_ole TYPE ole2_object.
 
     zcl_guis_utils=>raise_if_ole_object_empty( i_ole_object     = i_ole_object
@@ -48,20 +69,30 @@ CLASS ZCL_GUIS_PROPERTY_VALUE IMPLEMENTATION.
     ELSE.
       GET PROPERTY OF i_ole_object lv_property_name = mv_property_value.
     ENDIF.
-  endmethod.
+  ENDMETHOD.
 
 
-  method GET_VALUE_AS_STRING.
+  METHOD get_value_as_string.
 
     IF is_object( ) = abap_true.
       MESSAGE e011 WITH mv_property_name INTO zcl_guis_utils=>dummy.
       zcl_guis_utils=>raise_exception_from_sy_msg( ).
     ENDIF.
     rv_property_value = mv_property_value.
-  endmethod.
+  ENDMETHOD.
 
+  METHOD get_value_as_bool.
+    IF is_object( ) = abap_true.
+      MESSAGE e011 WITH mv_property_name INTO zcl_guis_utils=>dummy.
+      zcl_guis_utils=>raise_exception_from_sy_msg( ).
+    ENDIF.
+    IF mv_property_value = '1'.
+      rv_property_value = abap_true.
+    ENDIF.
+  ENDMETHOD.
 
-  method IS_OBJECT.
+  METHOD is_object.
     rv_is_object = mv_is_object.
-  endmethod.
+  ENDMETHOD.
 ENDCLASS.
+

@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCL_GUIS_SESSION_INFO</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Session info object of GUI Scripting</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_SESSION_INFO</CLSNAME>
+     <CMPNAME>APPLICATION_SERVER</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns name of application server</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_SESSION_INFO</CLSNAME>
+     <CMPNAME>CLIENT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns client number of session (mandant)</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_SESSION_INFO</CLSNAME>
+     <CMPNAME>CODEPAGE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns code page of session</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_SESSION_INFO</CLSNAME>
+     <CMPNAME>IS_DISABLED_BY_SERVER</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns flag if SAP GUI Scripting is disabled in connection</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_SESSION_INFO</CLSNAME>
+     <CMPNAME>LANGUAGE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns language of session</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_SESSION_INFO</CLSNAME>
+     <CMPNAME>MESSAGE_SERVER</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns name of message server of session</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_SESSION_INFO</CLSNAME>
+     <CMPNAME>PROGRAM</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns name of program opened in session</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_SESSION_INFO</CLSNAME>
+     <CMPNAME>SCREEN_NUMBER</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns screen number opened in session</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_SESSION_INFO</CLSNAME>
+     <CMPNAME>SCRIPTING_MODE_READ_ONLY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns scripting mode read flag of session</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_SESSION_INFO</CLSNAME>
+     <CMPNAME>SCRIPTING_MODE_RECORD_DISABLED</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns scripting mode recording flag of session</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_SESSION_INFO</CLSNAME>
+     <CMPNAME>SESSION_NUMBER</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns session number</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_SESSION_INFO</CLSNAME>
+     <CMPNAME>SYSTEM_NAME</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns system name of session (SID)</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_SESSION_INFO</CLSNAME>
+     <CMPNAME>SYSTEM_SESSION_ID</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns session unique id</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_SESSION_INFO</CLSNAME>
+     <CMPNAME>TRANSACTION</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns transaction opened in session</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_SESSION_INFO</CLSNAME>
+     <CMPNAME>USER</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns user of session</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -107,7 +107,7 @@ CLASS lcl_application IMPLEMENTATION.
           lo_column  TYPE REF TO cl_salv_column.
 
     lo_columns = io_alv->get_columns( ).
-    lo_column = lo_columns->get_column( 'DESCRIPTION' ).
+    lo_column = lo_columns->get_column( 'CONNECTION_NAME' ).
     lo_column->set_short_text( 'Conn.' ).
     lo_column->set_medium_text( 'Connection' ).
 
@@ -115,5 +115,57 @@ CLASS lcl_application IMPLEMENTATION.
     lo_column->set_short_text( 'Enabled' ).
     lo_column->set_medium_text( 'GuiScrEnabled' ).
     lo_column->set_long_text( 'Is Gui Scripting Enabled' ).
+
+    lo_column = lo_columns->get_column( 'APPLICATION_SERVER' ).
+    lo_column->set_short_text( 'AppSrv' ).
+    lo_column->set_medium_text( 'ApplicationServ' ).
+    lo_column->set_long_text( 'Application Server' ).
+
+    lo_column = lo_columns->get_column( 'CLIENT' ).
+    lo_column->set_short_text( 'Clnt' ).
+    lo_column->set_medium_text( 'Client' ).
+    lo_column->set_long_text( 'Client' ).
+
+    lo_column = lo_columns->get_column( 'LANGUAGE' ).
+    lo_column->set_short_text( 'Lang' ).
+    lo_column->set_medium_text( 'Language' ).
+    lo_column->set_long_text( 'Language' ).
+
+    lo_column = lo_columns->get_column( 'PROGRAM' ).
+    lo_column->set_short_text( 'Prog' ).
+    lo_column->set_medium_text( 'Program' ).
+    lo_column->set_long_text( 'ABAP Program' ).
+
+    lo_column = lo_columns->get_column( 'SCREEN_NUMBER' ).
+    lo_column->set_short_text( 'ScrNm' ).
+    lo_column->set_medium_text( 'ScreenNum' ).
+    lo_column->set_long_text( 'Screen Number' ).
+
+    lo_column = lo_columns->get_column( 'SESSION_NUMBER' ).
+    lo_column->set_short_text( 'SessNr' ).
+    lo_column->set_medium_text( 'SessionNum' ).
+    lo_column->set_long_text( 'Session Number' ).
+
+    lo_column = lo_columns->get_column( 'SYSTEM_NAME' ).
+    lo_column->set_short_text( 'Sys' ).
+    lo_column->set_medium_text( 'SysName' ).
+    lo_column->set_long_text( 'System name (SID)' ).
+
+    lo_column = lo_columns->get_column( 'SYSTEM_SESSION_ID' ).
+    lo_column->set_short_text( 'SessId' ).
+    lo_column->set_medium_text( 'SessionId' ).
+    lo_column->set_long_text( 'System session ID' ).
+
+    lo_column = lo_columns->get_column( 'TRANSACTION' ).
+    lo_column->set_short_text( 'Tran' ).
+    lo_column->set_medium_text( 'Transaction' ).
+    lo_column->set_long_text( 'Transaction' ).
+
+    lo_column = lo_columns->get_column( 'USER' ).
+    lo_column->set_short_text( 'Usr' ).
+    lo_column->set_medium_text( 'User' ).
+    lo_column->set_long_text( 'User' ).
+
+    lo_columns->set_optimize( abap_true ).
   ENDMETHOD.
 ENDCLASS.
