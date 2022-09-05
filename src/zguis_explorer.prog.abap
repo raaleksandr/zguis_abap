@@ -3,7 +3,7 @@
 *&---------------------------------------------------------------------*
 *& Program to explore SAP GUI Scripting sessions and elements
 *&---------------------------------------------------------------------*
-REPORT zguis_explorer.
+REPORT zguis_explorer MESSAGE-ID zguiscript_abap.
 
 CLASS lcl_application DEFINITION DEFERRED.
 DATA: gv_ok_code_100 TYPE syucomm,
@@ -19,11 +19,17 @@ CLASS lcl_application DEFINITION.
   PRIVATE SECTION.
     DATA: go_container_0100 TYPE REF TO cl_gui_custom_container,
           go_alv_0100       TYPE REF TO cl_salv_table,
-          go_model          TYPE REF TO zcl_guis_explorer_model.
+          go_model          TYPE REF TO zcl_guis_explorer_model,
+          gt_sessions_list  TYPE zcl_guis_explorer_model=>ty_sessions.
 
     METHODS: _show_error IMPORTING io_error TYPE REF TO cx_root,
              _prepare_alv100_before_show IMPORTING io_alv TYPE REF TO cl_salv_table
-                                         RAISING cx_salv_not_found.
+                                         RAISING cx_salv_not_found,
+             _prepare_alv100_columns IMPORTING io_alv TYPE REF TO cl_salv_table
+                                         RAISING cx_salv_not_found,
+             _prepare_alv100_events IMPORTING io_alv TYPE REF TO cl_salv_table,
+             _main_alv_double_click FOR EVENT double_click OF cl_salv_events_table
+                                    IMPORTING row column.
 ENDCLASS.
 
 START-OF-SELECTION.
@@ -55,8 +61,7 @@ CLASS lcl_application IMPLEMENTATION.
 
   METHOD on_status_0100.
 
-    DATA: lt_sessions_list TYPE zcl_guis_explorer_model=>ty_sessions,
-          lo_error         TYPE REF TO cx_root.
+    DATA: lo_error         TYPE REF TO cx_root.
 
     SET PF-STATUS '0100'.
     SET TITLEBAR '0100'.
@@ -70,10 +75,10 @@ CLASS lcl_application IMPLEMENTATION.
     IF go_alv_0100 IS NOT BOUND.
 
       TRY.
-          lt_sessions_list = go_model->get_list_of_sessions( ).
+          gt_sessions_list = go_model->get_list_of_sessions( ).
           cl_salv_table=>factory( EXPORTING r_container  = go_container_0100
                                   IMPORTING r_salv_table = go_alv_0100
-                                  CHANGING  t_table      = lt_sessions_list ).
+                                  CHANGING  t_table      = gt_sessions_list ).
 
           _prepare_alv100_before_show( go_alv_0100 ).
 
@@ -102,7 +107,11 @@ CLASS lcl_application IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD _prepare_alv100_before_show.
+    _prepare_alv100_columns( io_alv ).
+    _prepare_alv100_events( io_alv ).
+  ENDMETHOD.
 
+  METHOD _prepare_alv100_columns.
     DATA: lo_columns TYPE REF TO cl_salv_columns_table,
           lo_column  TYPE REF TO cl_salv_column.
 
@@ -166,6 +175,44 @@ CLASS lcl_application IMPLEMENTATION.
     lo_column->set_medium_text( 'User' ).
     lo_column->set_long_text( 'User' ).
 
+    lo_column = lo_columns->get_column( 'SESSION_ID' ).
+    lo_column->set_short_text( 'SessId' ).
+    lo_column->set_medium_text( 'SessionId' ).
+    lo_column->set_long_text( 'Session Id' ).
+
     lo_columns->set_optimize( abap_true ).
+  ENDMETHOD.
+
+  METHOD _prepare_alv100_events.
+    DATA: lo_salv_events TYPE REF TO CL_SALV_EVENTS_TABLE.
+
+    lo_salv_events = io_alv->get_event( ).
+    SET HANDLER _main_alv_double_click FOR lo_salv_events.
+  ENDMETHOD.
+
+  METHOD _main_alv_double_click.
+
+    DATA: lo_session TYPE REF TO zcl_guis_session.
+
+    FIELD-SYMBOLS: <ls_session_row> LIKE LINE OF gt_sessions_list.
+
+    READ TABLE gt_sessions_list INDEX row ASSIGNING <ls_session_row>.
+    IF sy-subrc <> 0.
+      RETURN.
+    ENDIF.
+
+    IF <ls_session_row>-is_gui_scripting_enabled <> abap_true.
+      MESSAGE i015 WITH <ls_session_row>-connection_name.
+      RETURN.
+    ENDIF.
+
+    IF <ls_session_row>-busy = abap_true.
+      MESSAGE i016.
+      RETURN.
+    ENDIF.
+
+    lo_session = go_model->get_session_by_id( <ls_session_row>-session_id ).
+
+    MESSAGE |all ok { lo_session->get_name( ) }| TYPE 'I'.
   ENDMETHOD.
 ENDCLASS.

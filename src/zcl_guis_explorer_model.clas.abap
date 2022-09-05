@@ -20,6 +20,7 @@ CLASS zcl_guis_explorer_model DEFINITION
         transaction              TYPE string,
         program                  TYPE string,
         screen_number            TYPE string,
+        session_id               TYPE string,
       END OF ty_session .
     TYPES:
       ty_sessions TYPE STANDARD TABLE OF ty_session WITH KEY connection_name session_number .
@@ -30,6 +31,17 @@ CLASS zcl_guis_explorer_model DEFINITION
     METHODS get_list_of_sessions
       RETURNING
         VALUE(rt_list_of_sessions) TYPE ty_sessions
+      RAISING
+        zcx_guis_error .
+
+    "! <p class="shorttext synchronized" lang="en">Returns session by it's Id</p>
+    "!
+    "! @raising   zcx_guis_error | <p class="shorttext synchronized" lang="en">GUI Scripting in ABAP General Exception Class</p>
+    METHODS get_session_by_id
+      IMPORTING
+        iv_id TYPE clike
+      RETURNING
+        VALUE(ro_session) TYPE REF TO zcl_guis_session
       RAISING
         zcx_guis_error .
   PROTECTED SECTION.
@@ -87,6 +99,16 @@ CLASS zcl_guis_explorer_model IMPLEMENTATION.
     ENDWHILE.
   ENDMETHOD.
 
+  METHOD get_session_by_id.
+    DATA: lo_gui_application TYPE REF TO zcl_guis_application,
+          lo_ole_object      TYPE REF TO zcl_guis_ole_object.
+
+    lo_gui_application = zcl_guis_application=>get_gui_application( ).
+    lo_ole_object = lo_gui_application->find_by_id( iv_id ).
+    CREATE OBJECT ro_session
+      EXPORTING
+        i_ole_object = lo_ole_object->m_ole_object.
+  ENDMETHOD.
 
   METHOD _add_data_of_connection.
 
@@ -127,6 +149,8 @@ CLASS zcl_guis_explorer_model IMPLEMENTATION.
     IF <ls_one_session>-busy = abap_true.
       RETURN.
     ENDIF.
+
+    <ls_one_session>-session_id = io_session->get_id( ).
 
     lo_info = io_session->info( ).
     <ls_one_session>-application_server = lo_info->application_server( ).

@@ -26,6 +26,24 @@
      <MSGNR>013</MSGNR>
      <TEXT>Property &amp; is not object</TEXT>
     </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZGUISCRIPT_ABAP</ARBGB>
+     <MSGNR>014</MSGNR>
+     <TEXT>Object not found by ID &amp;1</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZGUISCRIPT_ABAP</ARBGB>
+     <MSGNR>015</MSGNR>
+     <TEXT>Error, please turn on GUI Scripting on server side for &amp;1</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZGUISCRIPT_ABAP</ARBGB>
+     <MSGNR>016</MSGNR>
+     <TEXT>Error, session is busy, please wait current program to finish</TEXT>
+    </T100>
    </T100>
   </asx:values>
  </asx:abap>
