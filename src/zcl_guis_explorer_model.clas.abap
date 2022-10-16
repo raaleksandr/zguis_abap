@@ -25,6 +25,16 @@ CLASS zcl_guis_explorer_model DEFINITION
     TYPES:
       ty_sessions TYPE STANDARD TABLE OF ty_session WITH KEY connection_name session_number .
 
+    TYPES: BEGIN OF ty_object_property,
+             property_name            TYPE string,
+             is_object                TYPE abap_bool,
+             property_as_object       TYPE REF TO zcl_guis_ole_object,
+             property_value_plain     TYPE string,
+             is_item_of_collection    TYPE abap_bool,
+             index_of_collection_item TYPE i,
+           END OF ty_object_property.
+    TYPES: ty_object_properties TYPE STANDARD TABLE OF ty_object_property WITH KEY property_name.
+
     "! <p class="shorttext synchronized" lang="en">Returns list of SAP GUI Scripting Sessions</p>
     "!
     "! @raising   zcx_guis_error | <p class="shorttext synchronized" lang="en">GUI Scripting in ABAP General Exception Class</p>
@@ -33,15 +43,25 @@ CLASS zcl_guis_explorer_model DEFINITION
         VALUE(rt_list_of_sessions) TYPE ty_sessions
       RAISING
         zcx_guis_error .
+    "! <p class="shorttext synchronized" lang="en">Returns session parameters by it's Id</p>
+    "!
+    "! @raising   zcx_guis_error | <p class="shorttext synchronized" lang="en">GUI Scripting in ABAP General Exception Class</p>
+    METHODS get_session_property_by_id
+      IMPORTING
+        !iv_id                     TYPE clike
+      RETURNING
+        VALUE(rs_session_property) TYPE ty_object_property
+      RAISING
+        zcx_guis_error .
 
     "! <p class="shorttext synchronized" lang="en">Returns session by it's Id</p>
     "!
     "! @raising   zcx_guis_error | <p class="shorttext synchronized" lang="en">GUI Scripting in ABAP General Exception Class</p>
-    METHODS get_session_by_id
+    METHODS get_object_properties
       IMPORTING
-        iv_id TYPE clike
+        !io_object           TYPE REF TO zcl_guis_ole_object
       RETURNING
-        VALUE(ro_session) TYPE REF TO zcl_guis_session
+        VALUE(rt_properties) TYPE ty_object_properties
       RAISING
         zcx_guis_error .
   PROTECTED SECTION.
@@ -74,6 +94,19 @@ CLASS zcl_guis_explorer_model DEFINITION
         !ct_list_of_sessions            TYPE ty_sessions
       RAISING
         zcx_guis_error .
+
+    METHODS _get_object_props_collection
+      IMPORTING
+                !io_collection       TYPE REF TO zcl_guis_collection
+      RETURNING VALUE(rt_properties) TYPE ty_object_properties
+      RAISING
+                zcx_guis_error .
+    METHODS _get_object_props
+      IMPORTING
+                !io_ole_object       TYPE REF TO zcl_guis_ole_object
+      RETURNING VALUE(rt_properties) TYPE ty_object_properties
+      RAISING
+                zcx_guis_error .
 ENDCLASS.
 
 
@@ -99,15 +132,34 @@ CLASS zcl_guis_explorer_model IMPLEMENTATION.
     ENDWHILE.
   ENDMETHOD.
 
-  METHOD get_session_by_id.
+
+  METHOD get_session_property_by_id.
     DATA: lo_gui_application TYPE REF TO zcl_guis_application,
           lo_ole_object      TYPE REF TO zcl_guis_ole_object.
 
     lo_gui_application = zcl_guis_application=>get_gui_application( ).
     lo_ole_object = lo_gui_application->find_by_id( iv_id ).
-    CREATE OBJECT ro_session
-      EXPORTING
-        i_ole_object = lo_ole_object->m_ole_object.
+    rs_session_property-property_name = 'Session'.
+    rs_session_property-is_object     = abap_true.
+    rs_session_property-property_as_object = lo_ole_object.
+  ENDMETHOD.
+
+  METHOD get_object_properties.
+    IF io_object IS NOT BOUND.
+      RETURN.
+    ENDIF.
+
+    IF zcl_guis_collection=>object_is_collection( io_object ) = abap_true.
+      DATA: lo_collection  TYPE REF TO zcl_guis_collection.
+
+      CREATE OBJECT lo_collection
+        EXPORTING
+          i_ole_object = io_object->m_ole_object.
+
+      rt_properties = _get_object_props_collection( lo_collection ).
+    ELSE.
+      rt_properties = _get_object_props( io_object ).
+    ENDIF.
   ENDMETHOD.
 
   METHOD _add_data_of_connection.
@@ -133,6 +185,7 @@ CLASS zcl_guis_explorer_model IMPLEMENTATION.
     ENDWHILE.
 
   ENDMETHOD.
+
 
   METHOD _add_data_of_session.
 
@@ -163,5 +216,52 @@ CLASS zcl_guis_explorer_model IMPLEMENTATION.
     <ls_one_session>-system_session_id = lo_info->system_session_id( ).
     <ls_one_session>-transaction = lo_info->transaction( ).
     <ls_one_session>-user = lo_info->user( ).
+  ENDMETHOD.
+
+  METHOD _get_object_props_collection.
+    DATA: lo_item_of_collection TYPE REF TO zcl_guis_ole_object,
+          lv_item_num           TYPE i,
+          ls_property           TYPE ty_object_property.
+
+    rt_properties = _get_object_props( io_ole_object = io_collection ).
+
+    lo_item_of_collection = io_collection->get_first( ).
+    WHILE lo_item_of_collection IS BOUND.
+
+      lv_item_num = lv_item_num + 1.
+      ls_property-property_name            = |Item[{ lv_item_num }]|.
+      ls_property-is_object                = abap_true.
+      ls_property-property_as_object       = lo_item_of_collection.
+      ls_property-is_item_of_collection    = abap_true.
+      ls_property-index_of_collection_item = lv_item_num.
+      APPEND ls_property TO rt_properties.
+
+      lo_item_of_collection = io_collection->get_next( ).
+    ENDWHILE.
+  ENDMETHOD.
+
+  METHOD _get_object_props.
+    DATA: lt_property_values TYPE zcl_guis_ole_object=>ty_property_values,
+          ls_property        TYPE ty_object_property.
+
+    FIELD-SYMBOLS: <ls_property_value> LIKE LINE OF lt_property_values.
+
+    lt_property_values = io_ole_object->get_all_property_values( ).
+
+    SORT lt_property_values BY property_name.
+
+    LOOP AT lt_property_values ASSIGNING <ls_property_value>.
+      CLEAR ls_property.
+      ls_property-property_name      = <ls_property_value>-property_name.
+      ls_property-is_object          = <ls_property_value>-property_value->is_object( ).
+
+      CASE ls_property-is_object.
+        WHEN abap_true.
+          ls_property-property_as_object = <ls_property_value>-property_value->get_value_as_object( ).
+        WHEN OTHERS.
+          ls_property-property_value_plain = <ls_property_value>-property_value->mv_property_value.
+      ENDCASE.
+      APPEND ls_property TO rt_properties.
+    ENDLOOP.
   ENDMETHOD.
 ENDCLASS.

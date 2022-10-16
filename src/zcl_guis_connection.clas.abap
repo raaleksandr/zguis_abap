@@ -59,4 +59,5 @@ CLASS ZCL_GUIS_CONNECTION IMPLEMENTATION.
   method IS_DISABLED_BY_SERVER.
     rv_disabled_by_server = get_property_value_as_bool( 'DisabledByServer' ).
   endmethod.
+
 ENDCLASS.

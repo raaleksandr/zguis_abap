@@ -44,6 +44,18 @@
      <MSGNR>016</MSGNR>
      <TEXT>Error, session is busy, please wait current program to finish</TEXT>
     </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZGUISCRIPT_ABAP</ARBGB>
+     <MSGNR>017</MSGNR>
+     <TEXT>Error creating SAPGUI OLE object, check if SAP GUI for windows started</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZGUISCRIPT_ABAP</ARBGB>
+     <MSGNR>018</MSGNR>
+     <TEXT>Error occured, node &amp; not found</TEXT>
+    </T100>
    </T100>
   </asx:values>
  </asx:abap>

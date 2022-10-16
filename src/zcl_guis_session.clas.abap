@@ -22,6 +22,14 @@ public section.
       value(RO_INFO) type ref to ZCL_GUIS_SESSION_INFO
     raising
       ZCX_GUIS_ERROR .
+  "! <p class="shorttext synchronized" lang="en">Create new session like /o pressed</p>
+  "!
+  "! @raising   zcx_guis_error | <p class="shorttext synchronized" lang="en">GUI Scripting in ABAP General Exception Class</p>
+  methods create_new_session
+    returning
+      value(RO_session) type ref to ZCL_GUIS_SESSION
+    raising
+      ZCX_GUIS_ERROR .
 protected section.
 private section.
 ENDCLASS.
@@ -49,5 +57,14 @@ CLASS ZCL_GUIS_SESSION IMPLEMENTATION.
 
   method is_busy.
     rv_is_busy = get_property_value_as_bool( 'Busy' ).
+  endmethod.
+
+  method create_new_session.
+    DATA: l_ole_object  TYPE ole2_object.
+
+    CALL METHOD OF m_ole_object 'CreateSession' = l_ole_object.
+    CREATE OBJECT ro_session
+      EXPORTING
+        i_ole_object = l_ole_object.
   endmethod.
 ENDCLASS.
