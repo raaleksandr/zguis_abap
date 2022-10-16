@@ -18,6 +18,11 @@ public section.
   methods GET_NEXT
     returning
       value(RO_OBJECT) type ref to ZCL_GUIS_OLE_OBJECT .
+  class-methods object_is_collection
+    IMPORTING
+      io_ole_object TYPE REF TO zcl_guis_ole_object
+    RETURNING VALUE(rv_is_collection) TYPE abap_bool
+    raising ZCX_GUIS_ERROR.
 protected section.
 private section.
 
@@ -36,10 +41,7 @@ private section.
       value(R_OLE_OBJECT) type OLE2_OBJECT .
 ENDCLASS.
 
-
-
 CLASS ZCL_GUIS_COLLECTION IMPLEMENTATION.
-
 
   method GET_COUNT.
     rv_count = get_property_value_as_string( 'Count' ).
@@ -64,6 +66,14 @@ CLASS ZCL_GUIS_COLLECTION IMPLEMENTATION.
     ENDIF.
   endmethod.
 
+  method object_is_collection.
+
+    DATA: lv_type TYPE string.
+    lv_type = io_ole_object->get_type( ).
+    IF lv_type = 'GuiCollection' Or lv_type = 'GuiComponentCollection'.
+        rv_is_collection = abap_true.
+    ENDIF.
+  endmethod.
 
   method _GET_OBJECT_AT_POSITION.
 

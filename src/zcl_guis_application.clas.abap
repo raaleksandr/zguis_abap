@@ -7,10 +7,14 @@ public section.
 
   methods GET_CONNECTIONS
     returning
-      value(RO_CONNECTIONS) type ref to ZCL_GUIS_CONNECTIONS .
+      value(RO_CONNECTIONS) type ref to ZCL_GUIS_CONNECTIONS
+    raising
+      ZCX_GUIS_ERROR .
   class-methods GET_GUI_APPLICATION
     returning
-      value(RO_GUI_APPLICATION) type ref to ZCL_GUIS_APPLICATION .
+      value(RO_GUI_APPLICATION) type ref to ZCL_GUIS_APPLICATION
+    raising
+      ZCX_GUIS_ERROR .
 protected section.
 private section.
 ENDCLASS.
@@ -38,6 +42,11 @@ CLASS ZCL_GUIS_APPLICATION IMPLEMENTATION.
 
     CREATE OBJECT lo_vbscript.
     l_sapgui_ole_object = lo_vbscript->get_object( 'SAPGUI' ).
+
+    IF l_sapgui_ole_object IS INITIAL.
+      MESSAGE e017 INTO zcl_guis_utils=>dummy.
+      zcl_guis_utils=>raise_exception_from_sy_msg( ).
+    ENDIF.
 
     CALL METHOD OF l_sapgui_ole_object 'GetScriptingEngine' = l_gui_application_ole.
 

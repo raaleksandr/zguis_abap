@@ -11,7 +11,9 @@ public section.
       ZCX_GUIS_ERROR .
   methods GET_FIRST
     returning
-      value(RO_OBJECT) type ref to ZCL_GUIS_CONNECTION .
+      value(RO_OBJECT) type ref to ZCL_GUIS_CONNECTION
+    raising
+      ZCX_GUIS_ERROR .
   methods GET_NEXT
     returning
       value(RO_OBJECT) type ref to ZCL_GUIS_CONNECTION .

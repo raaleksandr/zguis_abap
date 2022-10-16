@@ -42,6 +42,15 @@ CLASS zcl_guis_property_value DEFINITION
         VALUE(rv_property_value) TYPE abap_bool
       RAISING
         zcx_guis_error .
+
+    "! <p class="shorttext synchronized" lang="en">Returns property value as abap object</p>
+    "!
+    "! @raising   zcx_guis_error | <p class="shorttext synchronized" lang="en">GUI Scripting in ABAP General Exception Class</p>
+    METHODS get_value_as_object
+      RETURNING
+        VALUE(ro_value_as_object) TYPE REF TO zcl_guis_ole_object
+      RAISING
+        zcx_guis_error .
   PROTECTED SECTION.
   PRIVATE SECTION.
 
@@ -89,6 +98,17 @@ CLASS zcl_guis_property_value IMPLEMENTATION.
     IF mv_property_value = '1'.
       rv_property_value = abap_true.
     ENDIF.
+  ENDMETHOD.
+
+  METHOD get_value_as_object.
+    IF is_object( ) <> abap_true.
+      MESSAGE e013 WITH mv_property_name INTO zcl_guis_utils=>dummy.
+      zcl_guis_utils=>raise_exception_from_sy_msg( ).
+    ENDIF.
+
+    CREATE OBJECT ro_value_as_object
+      EXPORTING
+        i_ole_object = m_property_as_ole_object.
   ENDMETHOD.
 
   METHOD is_object.

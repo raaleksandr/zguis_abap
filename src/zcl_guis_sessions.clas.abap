@@ -18,7 +18,9 @@ public section.
   "! @parameter ro_object | <p class="shorttext synchronized" lang="en">Session object of GUI Scripting</p>
   methods GET_FIRST
     returning
-      value(RO_OBJECT) type ref to ZCL_GUIS_SESSION .
+      value(RO_OBJECT) type ref to ZCL_GUIS_SESSION
+    raising
+      ZCX_GUIS_ERROR .
   "! <p class="shorttext synchronized" lang="en">Returns next session</p>
   "!
   "! @parameter ro_object | <p class="shorttext synchronized" lang="en">Session object of GUI Scripting</p>

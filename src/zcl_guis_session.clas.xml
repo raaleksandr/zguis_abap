@@ -15,6 +15,12 @@
    <DESCRIPTIONS>
     <SEOCOMPOTX>
      <CLSNAME>ZCL_GUIS_SESSION</CLSNAME>
+     <CMPNAME>CREATE_NEW_SESSION</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Create new session like /o pressed</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_GUIS_SESSION</CLSNAME>
      <CMPNAME>INFO</CMPNAME>
      <LANGU>E</LANGU>
      <DESCRIPT>Returns object with info of session</DESCRIPT>

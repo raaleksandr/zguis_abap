@@ -1,13 +1,28 @@
 "! <p class="shorttext synchronized" lang="en">Ole object of SAP Gui Scriptin object model</p>
 class ZCL_GUIS_OLE_OBJECT definition
   public
-  create protected .
+  create public .
 
 public section.
+
+  types: BEGIN OF ty_property_value_as_object,
+           property_name  TYPE string,
+           property_value TYPE REF TO zcl_guis_property_value,
+         END OF ty_property_Value_as_object.
+
+
+  types TY_PROPERTy_values   TYPE TABLE OF ty_property_value_as_object
+                                  WITH KEY property_Name.
 
     "! <p class="shorttext synchronized" lang="en">Handle of OLE-object of class</p>
   data M_OLE_OBJECT type OLE2_OBJECT read-only .
 
+    "! <p class="shorttext synchronized" lang="en">Returns values of all properties of OLE object</p>
+    "!
+    "! @raising   zcx_guis_error | <p class="shorttext synchronized" lang="en">GUI Scripting in ABAP General Exception Class</p>
+  methods GET_ALL_PROPERTY_VALUES RETURNING VALUE(rt_property_values) TYPE ty_property_values
+                                  raising ZCX_GUIS_ERROR .
+  class-methods CLASS_CONSTRUCTOR .
     "! <p class="shorttext synchronized" lang="en">Returns object name</p>
     "!
     "! @raising   zcx_guis_error | <p class="shorttext synchronized" lang="en">GUI Scripting in ABAP General Exception Class</p>
@@ -81,81 +96,86 @@ public section.
         VALUE(ro_property_value) TYPE REF TO zcl_guis_property_value
       RAISING
         zcx_guis_error .
-  PRIVATE SECTION.
+private section.
 
-    TYPES:
-      BEGIN OF ty_property_of_ole_object ,
+  types:
+    BEGIN OF ty_property_of_ole_object ,
         type     TYPE rstxtmd,
         property TYPE string,
       END OF ty_property_of_ole_object .
 
-    CLASS-DATA:
-      mt_properties_table   TYPE SORTED TABLE OF ty_property_of_ole_object
+  class-data:
+    mt_properties_table   TYPE SORTED TABLE OF ty_property_of_ole_object
       WITH NON-UNIQUE KEY type .
     "! <p class="shorttext synchronized" lang="en">Medium description</p>
-    CLASS-DATA mv_current_type_for_prop_fill TYPE rstxtmd .
+  class-data MV_CURRENT_TYPE_FOR_PROP_FILL type RSTXTMD .
 
     "! <p class="shorttext synchronized" lang="en">Fills properties for GuiApplication OLE object</p>
-    CLASS-METHODS _fill_for_gui_application .
+  class-methods _FILL_FOR_GUI_APPLICATION .
     "! <p class="shorttext synchronized" lang="en">Fill properties of GuiConnection OLE Object</p>
-    CLASS-METHODS _fill_for_gui_connection .
+  class-methods _FILL_FOR_GUI_CONNECTION .
     "! <p class="shorttext synchronized" lang="en">Sets global var which object property we will fill</p>
     "!
     "! @parameter iv_type | <p class="shorttext synchronized" lang="en">Name of type</p>
-    CLASS-METHODS _start_fill_properties_of_type
-      IMPORTING
-        !iv_type TYPE clike .
+  class-methods _START_FILL_PROPERTIES_OF_TYPE
+    importing
+      !IV_TYPE type CLIKE .
     "! <p class="shorttext synchronized" lang="en">Adds new property to current type</p>
-    CLASS-METHODS _p
-      IMPORTING
-        !iv_property_name TYPE clike .
+  class-methods _P
+    importing
+      !IV_PROPERTY_NAME type CLIKE .
     "! <p class="shorttext synchronized" lang="en">Fills properties for GuiUserArea OLE object type</p>
-    CLASS-METHODS _fill_for_gui_user_area .
+  class-methods _FILL_FOR_GUI_USER_AREA .
     "! <p class="shorttext synchronized" lang="en">Fill property list for GUI Toolbar OLE object</p>
-    CLASS-METHODS _fill_for_gui_toolbar .
+  class-methods _FILL_FOR_GUI_TOOLBAR .
     "! <p class="shorttext synchronized" lang="en">Fills property list for GuiTitlebar OLE object type</p>
-    CLASS-METHODS _fill_for_gui_titlebar .
+  class-methods _FILL_FOR_GUI_TITLEBAR .
     "! <p class="shorttext synchronized" lang="en">Fills properties of 'GuiTextField' OLE object</p>
-    CLASS-METHODS _fill_for_gui_text_field .
+  class-methods _FILL_FOR_GUI_TEXT_FIELD .
     "! <p class="shorttext synchronized" lang="en">Fills properties for GuiStatusPane OLE object</p>
-    CLASS-METHODS _fill_for_gui_status_pane .
+  class-methods _FILL_FOR_GUI_STATUS_PANE .
     "! <p class="shorttext synchronized" lang="en">Fills properties of OLE object type 'GuiStatusbar'</p>
-    CLASS-METHODS _fill_for_gui_statusbar .
+  class-methods _FILL_FOR_GUI_STATUSBAR .
     "! <p class="shorttext synchronized" lang="en">Fills list of properties for gui session</p>
-    CLASS-METHODS _fill_for_gui_session .
+  class-methods _FILL_FOR_GUI_SESSION .
     "! <p class="shorttext synchronized" lang="en">Fills property list for 'GuiOkCodeField' OLE object type</p>
-    CLASS-METHODS _fill_for_gui_ok_code_field .
+  class-methods _FILL_FOR_GUI_OK_CODE_FIELD .
     "! <p class="shorttext synchronized" lang="en">Fills property list for OLE object type 'GuiMenu'</p>
-    CLASS-METHODS _fill_for_gui_menu .
+  class-methods _FILL_FOR_GUI_MENU .
     "! <p class="shorttext synchronized" lang="en">Fills property list for GuiMainWindow OLE object</p>
-    CLASS-METHODS _fill_for_gui_main_window .
+  class-methods _FILL_FOR_GUI_MAIN_WINDOW .
     "! <p class="shorttext synchronized" lang="en">Fills properties of 'GuiCTextField' OLE object type</p>
-    CLASS-METHODS _fill_for_gui_ctext_field .
+  class-methods _FILL_FOR_GUI_CTEXT_FIELD .
     "! <p class="shorttext synchronized" lang="en">Fills property list for GuiContextMenu OLE object type</p>
-    CLASS-METHODS _fill_for_gui_context_menu .
+  class-methods _FILL_FOR_GUI_CONTEXT_MENU .
     "! <p class="shorttext synchronized" lang="en">Fills properties for GuiComponentCollection OLE object type</p>
-    CLASS-METHODS _fill_for_gui_comp_collection .
+  class-methods _FILL_FOR_GUI_COMP_COLLECTION .
     "! <p class="shorttext synchronized" lang="en">Fills properties for GuiCollection OLE object type</p>
-    CLASS-METHODS _fill_for_gui_collection .
+  class-methods _FILL_FOR_GUI_COLLECTION .
     "! <p class="shorttext synchronized" lang="en">Fills properties of GuiCheckBox OLE object type</p>
-    CLASS-METHODS _fill_for_gui_check_box .
+  class-methods _FILL_FOR_GUI_CHECK_BOX .
     "! <p class="shorttext synchronized" lang="en">Fills properties of OLE object type 'GuiButton'</p>
-    CLASS-METHODS _fill_for_gui_button .
+  class-methods _FILL_FOR_GUI_BUTTON .
     "! <p class="shorttext synchronized" lang="en">Fills properties of GuiBox OLE object type</p>
-    CLASS-METHODS _fill_for_gui_box .
+  class-methods _FILL_FOR_GUI_BOX .
     "! <p class="shorttext synchronized" lang="en">Adds new property to currently selected type</p>
-    CLASS-METHODS _add_new_property_to_curr_type
-      IMPORTING
-        !iv_property_name TYPE clike .
+  class-methods _ADD_NEW_PROPERTY_TO_CURR_TYPE
+    importing
+      !IV_PROPERTY_NAME type CLIKE .
     "! <p class="shorttext synchronized" lang="en">Fills property list for GuiMenubar OLE object</p>
-    CLASS-METHODS _fill_for_gui_menubar .
+  class-methods _FILL_FOR_GUI_MENUBAR .
     "! <p class="shorttext synchronized" lang="en">Fill static list of properties by OLE object type</p>
-    CLASS-METHODS _fill_property_list .
+  class-methods _FILL_PROPERTY_LIST .
 ENDCLASS.
 
 
 
 CLASS ZCL_GUIS_OLE_OBJECT IMPLEMENTATION.
+
+
+  method CLASS_CONSTRUCTOR.
+    _fill_property_list( ).
+  endmethod.
 
 
   METHOD constructor.
@@ -182,6 +202,24 @@ CLASS ZCL_GUIS_OLE_OBJECT IMPLEMENTATION.
       zcl_guis_utils=>raise_exception_from_sy_msg( ).
     ENDIF.
   ENDMETHOD.
+
+
+  method GET_ALL_PROPERTY_VALUES.
+    DATA: lv_type           TYPE rstxtmd,
+          ls_property_value TYPE ty_property_value_as_object.
+
+    FIELD-SYMBOLS: <ls_property> LIKE LINE OF mt_properties_table.
+
+    lv_type = get_type( ).
+
+    LOOP AT mt_properties_table ASSIGNING <ls_property>
+      WHERE type = lv_type.
+
+      ls_property_value-property_name  = <ls_property>-property.
+      ls_property_value-property_value = get_property_value( <ls_property>-property ).
+      APPEND ls_property_value TO rt_property_values.
+    ENDLOOP.
+  endmethod.
 
 
   METHOD get_id.
